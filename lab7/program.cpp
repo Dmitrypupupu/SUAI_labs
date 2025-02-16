@@ -1,5 +1,6 @@
 #include <iostream>
 #include "program.h"
+
 void getFirstWord(const char* str, char* firstWord) {
     while (*str == ' ' || *str == '\t' || *str == '\n') {
         str++;
@@ -10,13 +11,12 @@ void getFirstWord(const char* str, char* firstWord) {
         firstWord[i++] = *str++;
     }
 
-    firstWord[i] = '\0'; 
+    firstWord[i] = '\0';
 }
 
 char* create_string(int length) {
-    char* string = new char[length];
-    for(int index=0; index<length;index++){
-        std::cin >> string[index];
-    }
+    char* string = new char[length + 1]; // +1 для '\0'
+    std::cin.ignore();
+    std::cin.getline(string, length + 1);
     return string;
 }

@@ -32,9 +32,4 @@ void test_unique_sort() {
     std::cout << '\n';
 }
 
-int main() {
-    test_even_composition();
-    test_zero_summ();
-    test_unique_sort();
-    return 0;
-}
+

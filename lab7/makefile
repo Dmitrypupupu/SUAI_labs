@@ -1,15 +1,19 @@
 CXX = g++
 CXX_FLAGS = -std=c++17 -Wall -Wextra -fsanitize=address
 
-all: tests
+all: main
 
-tests: tests.o program.o
-	@(CXX) @(CXX_FLAGS) -o tests tests.o program.o
-tests.o: tests.cpp program.h
-	$(CXX) $(CXXFLAGS) -c tests.cpp
+main: main.o program.o tests.o
+	$(CXX) $(CXX_FLAGS) -o main main.o program.o tests.o
+
+main.o: main.cpp tests.h
+	$(CXX) $(CXX_FLAGS) -c main.cpp
 
 program.o: program.cpp program.h
-	$(CXX) $(CXXFLAGS) -c program.cpp
+	$(CXX) $(CXX_FLAGS) -c program.cpp
+
+tests.o: tests.cpp program.h
+	$(CXX) $(CXX_FLAGS) -c tests.cpp
 
 clean:
-	rm -f *.o tests
+	rm -f *.o main
