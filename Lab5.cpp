@@ -60,9 +60,7 @@ int main() {
   std::cin >> n;
   int data[n];
   for (int index = 0; index < n; index++) {
-    int number;
-    std::cin >> number;
-    data[index] = number;
+    std::cin >> data[index];
   }
   std::cout << even_composition(data, n) << '\n' << zero_summ(data, n) << '\n';
   unique_sort(data, n);

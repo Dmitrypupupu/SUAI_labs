@@ -3,7 +3,7 @@
 #include <limits>
 #include <map>
 
-void func(int a, int b, int c, double Xmin, double Xmax, double dx) {
+void func(double a, double b, double c, double Xmin, double Xmax, double dx) {
     std::map<double, std::string> data;
 
     for (double x = Xmin; x <= Xmax; x += dx) {
@@ -33,8 +33,7 @@ void func(int a, int b, int c, double Xmin, double Xmax, double dx) {
 }
 
 int main() {
-    int a, b, c;
-    double Xmin, Xmax, dx;
+    double a, b, c, Xmin, Xmax, dx;
 
     std::cout << "Введите коэффициенты a, b, c: ";
     while (!(std::cin >> a >> b >> c)) {

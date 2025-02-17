@@ -1,4 +1,4 @@
-#include <iostream> // NOLINT [clang-diagnostic-error]
+#include <iostream>
 
 #include "program.h"
 
