@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cmath>
 int main(){
-    int x,y;
+    double x,y;
     std::cin >> x >> y;
-    if ((x >= 0 && std::max(x, y) <= 1) || (x <=0 && x*x+y*y <=1)) {
+    if ((x >= 0 && std::max(abs(x), abs(y)) <= 1 ) || (x <=0 && x*x+y*y <=1)) {
         std::cout << "Точка попала в область!" << std::endl;
     }
     else {
