@@ -1,10 +1,13 @@
 CXX = g++
-CXX_FLAGS = -std=c++17 -Wall -Wextra -fsanitize=address
+CXX_FLAGS = -std=c++17 -Wall -Wextra 
 
 all: main
 
-main: main.o program.o tests.o
-	$(CXX) $(CXX_FLAGS) -o main main.o program.o tests.o
+main: main.o program.o tests.o exception_structs.o
+	$(CXX) $(CXX_FLAGS) -o main main.o program.o tests.o exception_structs.o
+
+exception_structs.o: exception_structs.cpp program.h
+	$(CXX) $(CXX_FLAGS) -c exception_structs.cpp
 
 main.o: main.cpp tests.h
 	$(CXX) $(CXX_FLAGS) -c main.cpp

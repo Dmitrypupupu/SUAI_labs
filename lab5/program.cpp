@@ -1,5 +1,5 @@
 #include "program.h"
-
+#include "exception_structs.h"
 int even_composition(int data[], int n) {
     int result = 1;
     for (int index = 0; index < n; index += 2) {
@@ -7,6 +7,8 @@ int even_composition(int data[], int n) {
     }
     return result;
 }
+
+
 
 int zero_summ(int data[], int n) {
     int lhs = -1, rhs = -1, result = 0;
@@ -25,10 +27,21 @@ int zero_summ(int data[], int n) {
         }
     }
 
-    if (lhs != -1 && rhs != -1) {
-        for (int index = lhs; index <= rhs; index++) {
-            result += data[index];
-        }
+    // Если ноль не найден
+    if (lhs == -1 || rhs == -1) {
+        throw NoZeroException();
+    }
+    // Если только один ноль
+    if (lhs == rhs) {
+        throw OneZeroException();
+    }
+    // Если два нуля подряд
+    if (rhs == lhs + 1) {
+        throw TwoZeroesRow();
+    }
+
+    for (int index = lhs; index <= rhs; index++) {
+        result += data[index];
     }
 
     return result;
@@ -55,14 +68,12 @@ void unique_sort(int data[], int n) {
             positive[index_positive++] = data[index];
         }
     }
-
     for (int index = 0; index < positive_count; index++) {
         data[index] = positive[index];
     }
     for (int index = 0; index < negative_count; index++) {
         data[index + positive_count] = negative[index];
     }
-
     delete[] negative;
     delete[] positive;
 }
